@@ -13,6 +13,9 @@
   "scripts": {
     "test": "standard && tape test.js"
   },
+  "bin": {
+    "htmlify": "./cli.js"
+  },
   "keywords": [
     "javascript",
     "html",
@@ -27,6 +30,7 @@
   },
   "files": [
     "index.js",
+    "cli.js",
     "prefix.html",
     "suffix.html"
   ],

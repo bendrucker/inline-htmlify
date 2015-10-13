@@ -2,6 +2,7 @@
 
 var test = require('tape')
 var Readable = require('readable-stream')
+var child = require('child_process')
 var htmlify = require('./')
 
 test('api', function (t) {
@@ -20,3 +21,13 @@ test('api', function (t) {
       t.ok(~html.indexOf('var foo = "bar"'))
     })
 })
+
+test('cli', function (t) {
+  t.plan(1)
+
+  child.exec('echo "THESCRIPT" | node cli.js', function (err, stdout) {
+    if (err) return t.end(err)
+    t.ok(~stdout.indexOf('THESCRIPT'))
+  })
+})
+
