@@ -1,0 +1,36 @@
+{
+  "name": "inline-htmlify",
+  "main": "index.js",
+  "version": "0.0.0",
+  "description": "Stream JS code in and get an HTML document out",
+  "license": "MIT",
+  "repository": "bendrucker/inline-htmlify",
+  "author": {
+    "name": "Ben Drucker",
+    "email": "bvdrucker@gmail.com",
+    "url": "bendrucker.me"
+  },
+  "scripts": {
+    "test": "standard && tape test.js"
+  },
+  "keywords": [
+    "javascript",
+    "html",
+    "index",
+    "browserify"
+  ],
+  "devDependencies": {
+    "join-stream": "0.0.0",
+    "readable-stream": "~2.0.2",
+    "standard": "^4.0.0",
+    "tape": "^4.0.0"
+  },
+  "files": [
+    "index.js",
+    "prefix.html",
+    "suffix.html"
+  ],
+  "dependencies": {
+    "through2": "~2.0.0"
+  }
+}
