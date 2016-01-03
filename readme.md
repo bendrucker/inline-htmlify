@@ -24,6 +24,12 @@ browserify('app.js')
 browserify app.js | htmlify > index.html
 ```
 
+Or using a custom document (`doc.html`):
+
+```
+cat script.js > htmlify doc.html > index.html
+```
+
 ## API
 
 #### `htmlify(document)` -> `stream`

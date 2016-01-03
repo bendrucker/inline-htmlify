@@ -35,6 +35,7 @@
   ],
   "dependencies": {
     "duplex-combination": "~1.2.1",
+    "minimist": "~1.2.0",
     "trumpet": "~1.7.2"
   }
 }
