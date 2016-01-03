@@ -1,26 +1,22 @@
 'use strict'
 
 var test = require('tape')
-var Readable = require('readable-stream')
+var read = require('read-all-stream')
+var toStream = require('string-to-stream')
 var child = require('child_process')
 var htmlify = require('./')
 
 test.only('api', function (t) {
   t.plan(3)
 
-  var stream = new Readable()
-  stream.push('var foo = "bar"')
-  stream.push(null)
+  var html = toStream('var foo = "bar"').pipe(htmlify())
 
-  var buffers = []
-  stream.pipe(htmlify())
-    .on('data', buffers.push.bind(buffers))
-    .on('end', function () {
-      var html = String(Buffer.concat(buffers))
-      t.ok(/<html>/.test(html))
-      t.ok(~html.indexOf('var foo = "bar"'))
-      t.notOk(~html.indexOf('inline'))
-    })
+  read(html, 'utf8', function (err, html) {
+    if (err) return t.end(err)
+    t.ok(/<html>/.test(html))
+    t.ok(~html.indexOf('var foo = "bar"'))
+    t.notOk(~html.indexOf('inline'))
+  })
 })
 
 test('cli', function (t) {
