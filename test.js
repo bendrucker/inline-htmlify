@@ -6,7 +6,7 @@ var toStream = require('string-to-stream')
 var child = require('child_process')
 var htmlify = require('./')
 
-test.only('api', function (t) {
+test('api', function (t) {
   t.plan(3)
 
   var html = toStream('var foo = "bar"').pipe(htmlify())
