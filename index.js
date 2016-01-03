@@ -8,10 +8,9 @@ var path = require('path')
 var defaultDocument = path.resolve(__dirname, 'document.html')
 
 module.exports = function htmlify (document) {
-  document = document || defaultDocument
-
+  document = document || fs.createReadStream(defaultDocument)
   var tr = trumpet()
-  fs.createReadStream(document).pipe(tr)
+  document.pipe(tr)
 
   var inline = tr.select('script[inline-htmlify]')
   inline.removeAttribute('inline-htmlify')

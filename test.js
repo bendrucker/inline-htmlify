@@ -19,12 +19,35 @@ test('api', function (t) {
   })
 })
 
+test('custom document api', function (t) {
+  t.plan(2)
+
+  var document = toStream('<foo/><script inline-htmlify></script>')
+  var html = toStream('var foo = "bar"').pipe(htmlify(document))
+
+  read(html, 'utf8', function (err, html) {
+    if (err) return t.end(err)
+    t.ok(~html.indexOf('<foo/>'))
+    t.ok(~html.indexOf('var foo = "bar"'))
+  })
+})
+
 test('cli', function (t) {
   t.plan(1)
 
   child.exec('echo "THESCRIPT" | node cli.js', function (err, stdout) {
     if (err) return t.end(err)
     t.ok(~stdout.indexOf('THESCRIPT'))
+  })
+})
+
+test('cli with custom document', function (t) {
+  t.plan(2)
+
+  child.exec('echo "THESCRIPT" | node cli.js custom.html', function (err, stdout) {
+    if (err) return t.end(err)
+    t.ok(~stdout.indexOf('THESCRIPT'))
+    t.ok(~stdout.indexOf('<foo/>'))
   })
 })
 

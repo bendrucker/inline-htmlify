@@ -26,7 +26,14 @@ browserify app.js | htmlify > index.html
 
 Or using a custom document (`doc.html`):
 
+
+```js
+browserify('app.js')
+  .pipe(htmlify(fs.createReadStream('doc.html')))
+  .pipe(fs.createWriteStream('index.html'))
 ```
+
+```sh
 cat script.js > htmlify doc.html > index.html
 ```
 
@@ -38,10 +45,10 @@ Returns a stream that takes in JavaScript and wraps it in an HTML document.
 
 ##### document
 
-A path to an HTML document to use as a template. The script will be inserted inside a `<script inline-htmlify></script>` tag. The attribute is used to locate the insertion point and is removed from the final output.
+A streaming HTML document. The script will be inserted inside a `<script inline-htmlify></script>` tag. The attribute is used to locate the insertion point and is removed from the final output.
 
-Type: `string`  
-Default: [`document.html`](document.html)
+Type: `stream`  
+Default: stream of [`document.html`](document.html)
 
 
 ## License
