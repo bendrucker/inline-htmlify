@@ -31,10 +31,10 @@
   "files": [
     "index.js",
     "cli.js",
-    "prefix.html",
-    "suffix.html"
+    "document.html"
   ],
   "dependencies": {
-    "through2": "~2.0.0"
+    "duplex-combination": "~1.2.1",
+    "trumpet": "~1.7.2"
   }
 }

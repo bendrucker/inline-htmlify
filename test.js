@@ -5,8 +5,8 @@ var Readable = require('readable-stream')
 var child = require('child_process')
 var htmlify = require('./')
 
-test('api', function (t) {
-  t.plan(2)
+test.only('api', function (t) {
+  t.plan(3)
 
   var stream = new Readable()
   stream.push('var foo = "bar"')
@@ -19,6 +19,7 @@ test('api', function (t) {
       var html = String(Buffer.concat(buffers))
       t.ok(/<html>/.test(html))
       t.ok(~html.indexOf('var foo = "bar"'))
+      t.notOk(~html.indexOf('inline'))
     })
 })
 

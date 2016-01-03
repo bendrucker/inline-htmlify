@@ -26,9 +26,16 @@ browserify app.js | htmlify > index.html
 
 ## API
 
-#### `htmlify()` -> `stream`
+#### `htmlify(document)` -> `stream`
 
 Returns a stream that takes in JavaScript and wraps it in an HTML document.
+
+##### document
+
+A path to an HTML document to use as a template. The script will be inserted inside a `<script inline-htmlify></script>` tag. The attribute is used to locate the insertion point and is removed from the final output.
+
+Type: `string`  
+Default: [`document.html`](document.html)
 
 
 ## License

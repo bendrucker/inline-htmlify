@@ -1,21 +1,20 @@
 'use strict'
 
-var through = require('through2')
+var trumpet = require('trumpet')
+var duplex = require('duplex-combination')
 var fs = require('fs')
-var resolve = require('path').resolve
+var path = require('path')
 
-var prefix = fs.readFileSync(resolve(__dirname, 'prefix.html'))
-var suffix = fs.readFileSync(resolve(__dirname, 'suffix.html'))
+var defaultDocument = path.resolve(__dirname, 'document.html')
 
-module.exports = function htmlify () {
-  var first = true
-  return through(function wrap (chunk, enc, callback) {
-    if (first) this.push(prefix)
-    first = false
-    this.push(chunk)
-    callback()
-  }, function (callback) {
-    this.push(suffix)
-    callback()
-  })
+module.exports = function htmlify (document) {
+  document = document || defaultDocument
+
+  var tr = trumpet()
+  fs.createReadStream(document).pipe(tr)
+
+  var inline = tr.select('script[inline-htmlify]')
+  inline.removeAttribute('inline-htmlify')
+
+  return duplex(tr, inline.createWriteStream())
 }
