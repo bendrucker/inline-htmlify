@@ -34,7 +34,13 @@ browserify('app.js')
 ```
 
 ```sh
-cat script.js > htmlify doc.html > index.html
+cat script.js | htmlify doc.html > index.html
+```
+
+The html file `doc.html` should have a `<script>` tag with the attribute `inline-htmlify`:
+
+```html
+<script inline-htmlify></script>
 ```
 
 ## API
