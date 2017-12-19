@@ -1,7 +1,7 @@
 {
   "name": "inline-htmlify",
   "main": "index.js",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Stream JS code in and get an HTML document out",
   "license": "MIT",
   "repository": "bendrucker/inline-htmlify",
