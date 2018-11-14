@@ -1,4 +1,4 @@
-# inline-htmlify [![Build Status](https://travis-ci.org/bendrucker/inline-htmlify.svg?branch=master)](https://travis-ci.org/bendrucker/inline-htmlify)
+# inline-htmlify [![Build Status](https://travis-ci.org/bendrucker/inline-htmlify.svg?branch=master)](https://travis-ci.org/bendrucker/inline-htmlify) [![Greenkeeper badge](https://badges.greenkeeper.io/bendrucker/inline-htmlify.svg)](https://greenkeeper.io/)
 
 > Stream JS code in and get an HTML document out
 
